@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <stdexcept>
 #include "Fonction.h"
 
 using namespace std;
