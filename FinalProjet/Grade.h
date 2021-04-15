@@ -21,6 +21,10 @@ public:
 	void setCourseNumber(long);
 	void setGrade(double);
 
+	bool checkNumberStudent();
+	bool checkNumberCourse();
+	void saveGrade();
+
 	//Destructor
 
 	virtual ~Grade();

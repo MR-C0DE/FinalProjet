@@ -20,6 +20,11 @@ public:
 	void setCode(std::string);
 	void setTitle(std::string);
 
+	//autre
+
+	void checkCoursNumber();
+	void saveCourse(bool);
+
 	//Destructor
 	virtual ~Course();
 private :
@@ -27,6 +32,9 @@ private :
 	long CourseNumber;
 	std::string code;
 	std::string title;
+
+
+	int countCourse();
 
 };
 

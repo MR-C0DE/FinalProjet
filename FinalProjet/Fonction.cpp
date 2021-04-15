@@ -4,19 +4,21 @@
 #include <vector>
 #include "Fonction.h"
 #include "Student.h"
+#include "Course.h"
+#include "Grade.h"
 
 using namespace std;
 void menu() {
+    
 
     int votreChoix = 0;
 
     cout << "1. Nouveau Etudiant\n" <<
-        "2. Nouveau Cours\n" <<
-        "3. Ajouter des notes\n" <<
-        "4. Saisir des notes\n" <<
-        "5. Rechercher Etudiant\n" <<
-        "6. Quitter\n\n" <<
-        ">>> ";
+            "2. Nouveau Cours\n" <<
+            "3. Ajouter des notes\n" <<
+            "4. Rechercher Etudiant\n" <<
+            "5. Quitter\n\n" <<
+            ">>> ";
 
     while (!(cin >> votreChoix)) {
         cout << "Entrez la bonne option : ";
@@ -31,16 +33,22 @@ void menu() {
     case 1:
         inscrire();
         break;
-    case 5:
+    case 2 :
+        nouveauCours();
+        break;
+    case 3:
+        ajouterNote();
+        break;
+    case 4:
         recherche();
+        break;
+    case 6:
+        system("exit");
         break;
     default:
         cout << "Entrée invalide!" << endl;
         break;
     }
-
-
-
 
 
 }
@@ -178,6 +186,52 @@ void recherche() {
         cout << "Une erreur est survenue!" << endl;
     }
 
+}
 
+void nouveauCours() {
+   srand(time(0));
     
+   
+    string code = ""; 
+    string titre = "";
+    long numero = 1000 + rand() % 5000;
+    cin.clear();
+    cin.ignore();
+    cout << "Taper le code du cours : ";
+    getline(cin, code);
+    cout << "Taper le titre du cours : ";
+    getline(cin, titre);
+
+    Course cours(numero, code, titre);
+    cours.checkCoursNumber();
+    cours.saveCourse(true);
+    
+
+}
+
+void ajouterNote() {
+
+   
+ long numeroEtudiant = 0;
+    long numeroCours = 0;
+    double note = 0.0;
+   
+    cin.clear();
+    cin.ignore();
+    cout << "Taper le numero de l'etudiant : ";
+    cin >> numeroEtudiant;
+    
+    cout << "Taper le numero du cours : ";
+    cin >> numeroCours;
+
+    cout << "Taper la note : ";
+    cin >> note;
+
+    Grade grade(numeroEtudiant, numeroCours, note);
+
+    grade.saveGrade();
+   
+   
+   
+   
 }
