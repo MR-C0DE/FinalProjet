@@ -17,7 +17,9 @@ void menu() {
             "2. Nouveau Cours\n" <<
             "3. Ajouter des notes\n" <<
             "4. Rechercher Etudiant\n" <<
-            "5. Quitter\n\n" <<
+            "5. afficher etudiant \n" << 
+            "6. afficher Cours \n" <<
+            "7. Quitter\n\n" <<
             ">>> ";
 
     while (!(cin >> votreChoix)) {
@@ -42,7 +44,13 @@ void menu() {
     case 4:
         recherche();
         break;
+    case 5:
+        Student().afficherLesEtudiant();
+        break;
     case 6:
+        Course().afficherCours();
+        break;
+    case 7:
         system("exit");
         break;
     default:
@@ -150,8 +158,7 @@ void verifierNumero(long& numero) {
 
 void recherche() {
     long numeroEtudiant = 0;
-    int compteur = 0;
-    bool sucess = true;
+  
      cout << "Taper un numero d'etudiant : ";
 
      while (!(cin >> numeroEtudiant)) {
@@ -162,29 +169,8 @@ void recherche() {
          
        }
     
-     
-
-     if (sucess) {
-        
-         string chaine = "administration/dossierAcademique/" + to_string(numeroEtudiant) + ".txt";
-
-         ifstream stream(chaine);
-
-         if (stream) {
-             string ligne;
-             cout << "\n" << endl;
-             while (getline(stream, ligne)) {
-                 cout << ligne << endl;
-             }
-         }
-         else {
-             cout << "numero d'etudiant invalide!" << endl;
-         }
-
-    }
-    else {
-        cout << "Une erreur est survenue!" << endl;
-    }
+     Student().rechercheEtudiant(numeroEtudiant);
+    
 
 }
 

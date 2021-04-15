@@ -24,6 +24,8 @@ public:
 	//Authors members functions
 
 	void afficher();
+	void afficherLesEtudiant();
+	void rechercheEtudiant(long) const;
 	void confirmer(bool);
 
 	//Destructor

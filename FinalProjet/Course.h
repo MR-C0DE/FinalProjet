@@ -15,15 +15,14 @@ public:
 	std::string getTitle() const noexcept;
 
 	//SETTERS
-
 	void setCourseNumber(long);
 	void setCode(std::string);
 	void setTitle(std::string);
 
 	//autre
-
 	void checkCoursNumber();
 	void saveCourse(bool);
+	void afficherCours();
 
 	//Destructor
 	virtual ~Course();

@@ -108,6 +108,51 @@ int Student::getId() {
 		}
 	}
 
+	fichier.close();
+
 	return (somme + 1);
+}
+void Student::afficherLesEtudiant() {
+	
+	if (this->getId() != 0) {
+		string file = "administration/Etudiant.txt";
+		ifstream fichier(file.c_str());
+
+		if (fichier) {
+			string line;
+			while (getline(fichier, line)) {
+				cout << line << endl;
+			}
+		}
+	}
+	else {
+		cout << "Pas d'etudiant inscrit" << endl;
+	}
+}
+
+void Student::rechercheEtudiant(long numero) const {
+
+	string chaine = "administration/dossierAcademique/" + to_string(numero) + ".txt";
+
+	try {
+
+		ifstream stream(chaine);
+
+		if (stream) {
+			string ligne;
+			cout << "\n" << endl;
+			while (getline(stream, ligne)) {
+				cout << ligne << endl;
+			}
+		}
+		else {
+			throw std::runtime_error("Etudiant introuvable.");
+		}
+	}
+	catch (std::runtime_error const& exception) {
+		std::cout << "Erreur : " << exception.what() << std::endl;
+	}
+
+
 }
 Student::~Student() {};

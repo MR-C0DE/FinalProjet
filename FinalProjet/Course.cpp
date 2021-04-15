@@ -1,5 +1,5 @@
 #include <fstream>
-
+#include <iostream>
 #include "Course.h"
 #include <string>
 
@@ -91,6 +91,26 @@ void Course::saveCourse(bool correct) {
 		}
 
 		fichier.close();
+	}
+}
+
+void Course::afficherCours() {
+	if (this->countCourse() != 0) {
+		int cpt = 0;
+		string file = "administration/cours/coursList.txt";
+		ifstream fichier(file.c_str());
+		if (fichier) {
+			string line;
+			while (getline(fichier, line)) {
+				cpt++;
+				cout <<cpt<< ". " << line << endl;
+			}
+		}
+
+		fichier.close();
+	}
+	else {
+		cout << "Pas des cours existants" << endl;
 	}
 }
 
