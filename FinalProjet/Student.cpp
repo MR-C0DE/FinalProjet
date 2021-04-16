@@ -3,26 +3,26 @@
 #include <string>
 #include "Student.h"
 using namespace std;
-//Constructor
 
+//Constructeur
 Student::Student(long numberStudent, string firstName, string lastName) {
 	this->numberStudent = numberStudent;
 	this->setFirstName(firstName);
 	this->setLastName(lastName);
 }
 
-//GETTERS
-long Student::getNumberStudent() const noexcept {
+// La definition des GETTERS
+long Student::getNumberStudent() const {
 	return this->numberStudent;
 }
-string Student:: getFirstName() const noexcept {
+string Student:: getFirstName() const {
 	return this->firstName;
 }
-string Student::getLastName() const noexcept {
+string Student::getLastName() const {
 	return this->lastName;
 }
 
-//SETTERS
+// La definition des SETTERS
 
 void Student::setNumberStudent(long numberStudent) {
 	if (numberStudent > 10000 && numberStudent < 90000) {
@@ -34,6 +34,8 @@ void Student::setNumberStudent(long numberStudent) {
 	}
 	
 }
+
+// La condition qui vérifie si la longueur du nom est de trois caractères ou plus
 void Student::setFirstName(string firstName) {
 	if (firstName.size() >= 3) {
 		this->firstName = firstName;
@@ -44,6 +46,8 @@ void Student::setFirstName(string firstName) {
 	}
 	
 }
+
+// La condition qui vérifie si la longueur du prénom est de trois caractères ou plus
 void Student::setLastName(string lastName) {
 	if (lastName.size() >= 3) {
 		this->lastName = lastName;
@@ -55,20 +59,21 @@ void Student::setLastName(string lastName) {
 	
 }
 
-
+// Fonction qui affiche les coordonnés d'un etudiant
 void Student::afficher() {
-	cout << "\nNumero Etudiant : " << getNumberStudent() << "\n"
-		 << "Nom             : "	 << getFirstName() << "\n"
-		 << "Prenom          : "  << getLastName() << endl;
+	cout << "\nNumero Etudiant : " << this->numberStudent << "\n"
+		 << "Nom             : "	 << this->firstName << "\n"
+		 << "Prenom          : "  << this->lastName << endl;
 }
 
+// Enregistrement des données dans un fichier texte par étudiant
 void Student::confirmer(bool autoriser) {
-	string file = "administration/Etudiant.txt";
+	string cheminRepertoire = "administration/Etudiant.txt";
 	string saveStudentsNumber = "administration/ListeNumeroEtudiant.txt";
-	string fileStudent = "administration/dossierAcademique/";
+	string cheminRepertoireStudent = "administration/dossierAcademique/";
 	if (autoriser == true) {
 
-		ofstream fichier(file.c_str(), ios::app);
+		ofstream fichier(cheminRepertoire.c_str(), ios::app);
 		ofstream fichierSauvegarderEtudiantNumero(saveStudentsNumber.c_str(),ios::app);
 
 		if (fichier) {
@@ -79,10 +84,10 @@ void Student::confirmer(bool autoriser) {
 				<<"Prenom          : " << this->lastName << "\n\n";
 
 			string concat = to_string(this->numberStudent) + ".txt";
-			string fileStudent = "administration/dossierAcademique/" + concat;
-			ofstream createFile(fileStudent.c_str());
-			if (createFile) {
-				createFile 
+			string cheminRepertoireStudent = "administration/dossierAcademique/" + concat;
+			ofstream createcheminRepertoire(cheminRepertoireStudent.c_str());
+			if (createcheminRepertoire) {
+				createcheminRepertoire 
 					<< "Numero Etudiant : " << this->numberStudent << "\n"
 					<< "Nom             : " << this->firstName << "\n"
 					<< "Prenom          : " << this->lastName << "\n\n";
@@ -97,52 +102,56 @@ void Student::confirmer(bool autoriser) {
 		fichierSauvegarderEtudiantNumero.close();
 	}
 }
+// la fonction renvoie le nombre d'etudiants
 int Student::getId() {
-	int somme = 0;
+	int compteur = 0;
 	ifstream fichier("administration/ListeNumeroEtudiant.txt");
 	if (fichier) {
-		string line;
-		while (getline(fichier, line))
+		string lineCapture;   
+		while (getline(fichier, lineCapture))
 		{
-			somme++;
+			compteur++;
 		}
 	}
 
 	fichier.close();
 
-	return (somme + 1);
+	return (compteur + 1);
 }
+
+// La fonction affiche les etudiants enregistres
 void Student::afficherLesEtudiant() {
 	
 	if (this->getId() != 0) {
-		string file = "administration/Etudiant.txt";
-		ifstream fichier(file.c_str());
+		string cheminRepertoire = "administration/Etudiant.txt";
+		ifstream fichier(cheminRepertoire.c_str());
 
 		if (fichier) {
-			string line;
-			while (getline(fichier, line)) {
-				cout << line << endl;
+			string lineCapture;
+			while (getline(fichier, lineCapture)) {
+				cout << lineCapture << endl;
 			}
 		}
 	}
 	else {
-		cout << "Pas d'etudiant inscrit" << endl;
+		cout << "Aucun étudiant enregistré" << endl;
 	}
 }
 
+//la finction permet de recherche l'etudiant par son numero
 void Student::rechercheEtudiant(long numero) const {
 
-	string chaine = "administration/dossierAcademique/" + to_string(numero) + ".txt";
+	string cheminRepertoire = "administration/dossierAcademique/" + to_string(numero) + ".txt";
 
 	try {
 
-		ifstream stream(chaine);
+		ifstream stream(cheminRepertoire);
 
 		if (stream) {
-			string ligne;
+			string lineCapture;
 			cout << "\n" << endl;
-			while (getline(stream, ligne)) {
-				cout << ligne << endl;
+			while (getline(stream, lineCapture)) {
+				cout << lineCapture << endl;
 			}
 		}
 		else {
@@ -152,7 +161,7 @@ void Student::rechercheEtudiant(long numero) const {
 	catch (std::runtime_error const& exception) {
 		std::cout << "Erreur : " << exception.what() << std::endl;
 	}
-
-
 }
+
+//destructeur virtuel
 Student::~Student() {};

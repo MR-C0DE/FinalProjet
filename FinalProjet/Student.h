@@ -11,9 +11,9 @@ public:
 
 	Student(long, std::string, std::string);
 	//GETTERS
-	long getNumberStudent() const noexcept;
-	std::string getFirstName() const noexcept;
-	std::string getLastName() const noexcept;
+	long getNumberStudent() const ;
+	std::string getFirstName() const ;
+	std::string getLastName() const ;
 
 	//SETTERS
 
