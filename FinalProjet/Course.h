@@ -9,17 +9,17 @@ public:
 
 	Course(long, std::string, std::string);
 
-	//Declaration du prototype GETTERS
+	//GETTERS
 	long getCourseNumber() const noexcept;
 	std::string getCode() const noexcept;
 	std::string getTitle() const noexcept;
 
-	//Declaration du prototype SETTERS
+	//SETTERS
 	void setCourseNumber(long);
 	void setCode(std::string);
 	void setTitle(std::string);
 
-	//Les autres fonctions membres de la classe
+	//autre
 	void checkCoursNumber();
 	void saveCourse(bool);
 	void afficherCours();
