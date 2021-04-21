@@ -23,10 +23,10 @@ public:
 
 	//Authors members functions
 
-	void afficher();
+	void confirmer(bool);
 	void afficherLesEtudiant();
 	void rechercheEtudiant(long) const;
-	void confirmer(bool);
+	void afficher();
 
 	//Destructor
 
