@@ -1,13 +1,14 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <algorithm>
 #include "Fonction.h"
 
 using namespace std;
 
 int main()
 { 
-    //la variable confirmation permet d'arreter ou de continuer le programme
+    //la variable confirmation permet d'arreter ou de continuer le programme.
    int confirmation = 1;
    try {
        do {
