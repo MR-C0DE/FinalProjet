@@ -6,6 +6,7 @@ using namespace std;
 
 //Constructeur
 Student::Student(long numberStudent, string firstName, string lastName) 
+
 {
 	this->numberStudent = numberStudent;
 	this->setFirstName(firstName);
@@ -191,7 +192,7 @@ void Student::rechercheEtudiant(long numero) const
 			throw std::runtime_error("Etudiant introuvable.");
 		}
 	}
-	
+
 	catch (std::runtime_error const& exception) 
 	{
 		std::cout << "Erreur : " << exception.what() << std::endl;
