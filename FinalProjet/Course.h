@@ -3,7 +3,7 @@
 class Course
 {
 public:
-	//Constructor
+	//Constructeur
 
 	Course() = default;
 
@@ -24,7 +24,7 @@ public:
 	void saveCourse(bool);
 	void afficherCours();
 
-	//Destructor
+	//Destructeur
 	virtual ~Course();
 private :
 

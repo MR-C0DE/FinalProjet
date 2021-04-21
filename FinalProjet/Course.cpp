@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//La difition d'un constructeur
+//La difition d'un constructeur  
 
 Course::Course(long CourseNumber, string code, string title) 
 {
