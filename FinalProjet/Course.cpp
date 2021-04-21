@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//La difition d'un constructeur  
+//La difition d'un constructeur.
 
 Course::Course(long CourseNumber, string code, string title) 
 {
@@ -17,15 +17,15 @@ Course::Course(long CourseNumber, string code, string title)
 }
 
 //La definition de GETTERS
-long Course::getCourseNumber() const noexcept 
+long Course::getCourseNumber() const  
 {
 	return this->CourseNumber;
 }
-string Course::getCode() const noexcept 
+string Course::getCode() const  
 {
 	return this->code;
 }
-string Course::getTitle() const noexcept 
+string Course::getTitle() const  
 {
 	return this->title;
 }

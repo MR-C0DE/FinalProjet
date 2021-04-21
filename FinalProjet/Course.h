@@ -10,9 +10,9 @@ public:
 	Course(long, std::string, std::string);
 
 	//Declaration du prototype GETTERS
-	long getCourseNumber() const noexcept;
-	std::string getCode() const noexcept;
-	std::string getTitle() const noexcept;
+	long getCourseNumber() const ;
+	std::string getCode() const ;
+	std::string getTitle() const ;
 
 	//Declaration du prototype SETTERS
 	void setCourseNumber(long);
