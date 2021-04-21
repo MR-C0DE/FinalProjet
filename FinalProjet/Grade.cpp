@@ -14,42 +14,52 @@ Grade::Grade(long studentNumber, long courseNumber, double grade) {
 
 //GETTERS
 
-long Grade::getStudentNumber() const noexcept {
+long Grade::getStudentNumber() const 
+{
 	return this->studentNumber;
 }
 
-long Grade::getCourseNumber() const noexcept {
+long Grade::getCourseNumber() const  
+{
 	return this->courseNumber;
 }
 
-double Grade::getGrade() const noexcept {
+double Grade::getGrade() const  
+{
 	return this->grade;
 }
 
 //SETTERS
 
-void Grade::setStudentNumber(long studentNumber) {
+void Grade::setStudentNumber(long studentNumber)
+{
 	this->studentNumber = studentNumber;
 }
 
-void Grade::setCourseNumber(long courseNumber) {
+void Grade::setCourseNumber(long courseNumber) 
+{
 	this->courseNumber;
 }
 
-void Grade::setGrade(double grade) {
+void Grade::setGrade(double grade) 
+{
 	this->grade;
 }
 
-bool Grade::checkNumberStudent() {
+bool Grade::checkNumberStudent()
+{
 	bool correct = false;
 
 	string file = "administration/ListeNumeroEtudiant.txt";
 	ifstream fichier(file.c_str());
 
-	if (fichier) {
+	if (fichier) 
+	{
 		string line;
-		while (getline(fichier, line)) {
-			if (to_string(this->studentNumber) == line) {
+		while (getline(fichier, line))
+		{
+			if (to_string(this->studentNumber) == line) 
+			{
 				correct = true;
 			}
 		}
@@ -66,10 +76,13 @@ bool Grade::checkNumberCourse() {
 	string file = "administration/cours/numeroCours.txt";
 	ifstream fichier(file.c_str());
 
-	if (fichier) {
+	if (fichier) 
+	{
 		string line;
-		while (getline(fichier, line)) {
-			if (to_string(this->courseNumber) == line) {
+		while (getline(fichier, line)) 
+		{
+			if (to_string(this->courseNumber) == line) 
+			{
 				correct = true;
 			}
 		}
@@ -80,7 +93,8 @@ bool Grade::checkNumberCourse() {
 
 void Grade::saveGrade() {
 	
-	if (this->checkNumberCourse() && this->checkNumberStudent()) {
+	if (this->checkNumberCourse() && this->checkNumberStudent()) 
+	{
 		
 		int numberline = 0;
 		int cpt = 0;
@@ -91,13 +105,16 @@ void Grade::saveGrade() {
 
 	
 
-		if (fichier1) {
+		if (fichier1)
+		{
 
 			string line1;
 
-			while (getline(fichier1, line1)) {
+			while (getline(fichier1, line1))
+			{
 				cpt++;
-				if (to_string(this->courseNumber) == line1) {
+				if (to_string(this->courseNumber) == line1) 
+				{
 					numberline = cpt;
 				}
 			}
@@ -109,13 +126,16 @@ void Grade::saveGrade() {
 		string file2 = "administration/cours/coursList.txt";
 		ifstream fichier2(file2.c_str());
 		
-		if (fichier2) {
+		if (fichier2) 
+		{
 			
 			string line2;
 
-			while (getline(fichier2, line2)) {
+			while (getline(fichier2, line2)) 
+			{
 				cpt++;
-				if (cpt == numberline) {
+				if (cpt == numberline) 
+				{
 					cours = line2;
 				}
 			}
@@ -126,7 +146,8 @@ void Grade::saveGrade() {
 		string file3 = "administration/dossierAcademique/" + to_string(this->studentNumber) + ".txt";
 		ofstream fichier3(file3.c_str(), ios::app);
 		
-		if (fichier3) {
+		if (fichier3) 
+		{
 		
 			fichier3 <<"\n" <<cours << "  note = " << this->grade <<endl;
 		}

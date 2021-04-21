@@ -10,9 +10,9 @@ public:
 	Grade(long, long, double);
 
 	//GETTERS
-	long getCourseNumber() const noexcept;
-	long getStudentNumber() const noexcept;
-	double getGrade() const noexcept;
+	long getCourseNumber() const ;
+	long getStudentNumber() const ;
+	double getGrade() const ;
 	
 
 	//SETTERS
